@@ -24,4 +24,8 @@ public @Data class AddressBookDTO {
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public AddressBookDTO() {
+		
+	}
 }
