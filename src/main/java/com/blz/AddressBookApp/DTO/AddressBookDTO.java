@@ -2,9 +2,9 @@ package com.blz.AddressBookApp.DTO;
 
 import javax.validation.constraints.Pattern;
 
-import lombok.Data;
+import lombok.ToString;
 
-public @Data class AddressBookDTO {
+public @ToString class AddressBookDTO {
 
 	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}[ ][A-Z]{1}[a-zA-Z\\s]{2,}$", message = "Invalid FullName")
 	public String fullName;
@@ -23,5 +23,9 @@ public @Data class AddressBookDTO {
 		this.state = state;
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
+	}
+	
+		public AddressBookDTO(){
+		
 	}
 }
