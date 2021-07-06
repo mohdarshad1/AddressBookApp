@@ -11,7 +11,7 @@ import com.blz.AddressBookApp.Model.AddressBookData;
 @Repository
 public interface AddressBookRepository extends CrudRepository<AddressBookData, Integer> {
 	
-	@Query(value = "select * from address_book, where name LIKE %:keyword%", nativeQuery = true)
+	@Query(value = "select * from CONTACTS, where name LIKE %:keyword%", nativeQuery = true)
 	List<AddressBookData> getAddressByKeywordName(String keyword);
 
 }
