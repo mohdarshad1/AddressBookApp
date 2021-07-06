@@ -7,15 +7,13 @@ import com.blz.AddressBookApp.Model.AddressBookData;
 
 public interface IAddressBookService {
 
-	List<AddressBookData> getAddressBookData();
+	List<AddressBookData> getAddressBookContactData();
 
-	AddressBookData getAddressBookDataById(int personId);
+	AddressBookData getAddressBookContactDataById(int id);
 
-	AddressBookData createAddressBookData(AddressBookDTO addressBookDTO);
+	AddressBookData createAddressBookContactData(AddressBookDTO addressBookDTO);
 
-	AddressBookData updateAddressBookData(int personId, AddressBookDTO addressBookDTO);
+	AddressBookData updateAddressBookContactData(int id, AddressBookDTO addressBookDTO);
 
-	void deleteAddressBookData(int personId);
-
-	List<AddressBookData> getAddressByKeywordName(String keyword);
+	void deleteAddressBookContactData(int id);
 }

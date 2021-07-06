@@ -15,21 +15,20 @@ import com.blz.AddressBookApp.DTO.ResponseDTO;
 @ControllerAdvice
 public class AddressBookExceptionHandler {
 
-	private static final String message = "Exception while processing rest request";
-
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ResponseDTO> handleMethodArgumentNotValidException(
 			MethodArgumentNotValidException exception) {
 		List<ObjectError> errorList = exception.getBindingResult().getAllErrors();
-		List<String> errMessage = errorList.stream().map(mapper -> mapper.getDefaultMessage())
+		List<String> errorMessages = errorList.stream().map(errorObject -> errorObject.getDefaultMessage())
 				.collect(Collectors.toList());
-		ResponseDTO responseDTO = new ResponseDTO(message, errMessage);
+		ResponseDTO responseDTO = new ResponseDTO("Exception while processing REST Request", errorMessages);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 	}
-
+	
 	@ExceptionHandler(AddressBookException.class)
-	public ResponseEntity<ResponseDTO> handleAddressBookException(AddressBookException exception) {
-		ResponseDTO responseDTO = new ResponseDTO(message, exception.getMessage());
+	public ResponseEntity<ResponseDTO> handleAddressBookException(
+			AddressBookException exception) {
+		ResponseDTO responseDTO = new ResponseDTO("Exception while processing REST Request", exception.getMessage());
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 	}
 }

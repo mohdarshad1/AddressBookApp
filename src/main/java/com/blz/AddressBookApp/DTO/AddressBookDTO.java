@@ -1,32 +1,27 @@
 package com.blz.AddressBookApp.DTO;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
-import lombok.ToString;
+import lombok.Data;
 
-@ToString
-public class AddressBookDTO {
+public @Data class AddressBookDTO {
 
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "Name is Invalid")
-	@NotEmpty(message = "Name cannot be null ")
-	public String name;
-
-	@Pattern(regexp = "^([A-Za-z0-9/,-]{3,}[ ]?)+$", message = "Address is Invalid")
-	@NotEmpty(message = "Address cannot be null")
+	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}[ ][A-Z]{1}[a-zA-Z\\s]{2,}$", message = "Invalid FullName")
+	public String fullName;
+	@Pattern(regexp = "^[A-Za-z0-9-,\\.]{3,}([\\s][A-Za-z0-9-,\\.]{3,}){0,}$", message = "Invalid Address")
 	public String address;
-
-	@Pattern(regexp = "^[9][1][ ][6-9][0-9]{9}$", message = "PhoneNo is Invalid")
-	@NotEmpty(message = "PhoneNo cannot be null")
-	public String phoneNumber;
-
-	@NotEmpty(message = "City cannot be null")
 	public String city;
-
-	@NotEmpty(message = "State cannot be null")
 	public String state;
-
-	@NotEmpty(message = "zipCode cannot be null")
-	public String zipCode;
-
+	public String zip;
+	@Pattern(regexp = "((^\\+?)(([0-9]{2,3})(\\s))?)[1-9]{1}[0-9]{9}$", message = "Invalid Phone Number")
+	public String phoneNumber;
+	
+	public AddressBookDTO(String fullName, String address, String city, String state, String zip, String phoneNumber) {
+		this.fullName = fullName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phoneNumber = phoneNumber;
+	}
 }
