@@ -22,8 +22,6 @@ import com.blz.AddressBookApp.DTO.ResponseDTO;
 import com.blz.AddressBookApp.Model.AddressBookData;
 import com.blz.AddressBookApp.Service.IAddressBookService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/addressbookservice")
